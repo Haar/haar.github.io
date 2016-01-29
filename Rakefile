@@ -1,3 +1,7 @@
+task :preview do
+  system('middleman')
+end
+
 task :deploy do
   puts 'Removing existing build folder'
   `rm -rf build`
