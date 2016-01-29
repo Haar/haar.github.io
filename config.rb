@@ -4,15 +4,15 @@
 
 config[:casper] = {
   blog: {
-    url: 'http://www.example.com',
-    name: 'Middleman',
-    description: 'Makes developing websites simple.',
+    url: 'http://www.tallguyrob.com',
+    name: 'TallGuyRob',
+    description: 'A brief insight into the chaos that is my mind.',
     date_format: '%d %B %Y',
     navigation: true,
     logo: nil # Optional
   },
   author: {
-    name: 'Middleman',
+    name: 'Robert White',
     bio: nil, # Optional
     location: nil, # Optional
     website: nil, # Optional
