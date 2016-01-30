@@ -61,11 +61,21 @@ module MiddlemanCasperHelpers
   def tags?(article = current_article)
     article.tags.present?
   end
+
+  def tag_link(tag)
+    haml_tag(:a, tag, href: tag_path(tag))
+  end
+
   def tags(article = current_article, separator = ', ')
+    tags = article.tags
+    return capture_haml { tag_link(tags.first) } if tags.count == 1
+
     capture_haml do
-      article.tags.each do |tag|
-        haml_tag(:a, tag, href: tag_path(tag))
-        haml_concat(separator) unless article.tags.last == tag
+
+      tags.each do |tag|
+        tag_link(tag)
+        haml_concat(separator) unless article.tags.last(2).include?(tag)
+        haml_concat("#{separator} and ") if article.tags.last(2).first == tag
       end
     end.gsub("\n", '')
   end
