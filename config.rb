@@ -13,11 +13,11 @@ config[:casper] = {
   },
   author: {
     name: 'Robert White',
-    bio: nil, # Optional
-    location: nil, # Optional
-    website: nil, # Optional
-    gravatar_email: nil, # Optional
-    twitter: nil # Optional
+    bio: 'Managing Director of Terracoding, an awesome software development shop based in Sheffield, UK.', # Optional
+    location: 'UK', # Optional
+    website: 'https://www.tallguyrob.com', # Optional
+    gravatar_email: 'robert@terracoding.com', # Optional
+    twitter: 'tallguyrob' # Optional
   },
   navigation: {
     "Home" => "/"
