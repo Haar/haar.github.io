@@ -14,27 +14,10 @@
     <link rel="alternate" href="http://www.tallguyrob.com/2016/02/01/starting-afresh-with-middleman/"/>
     <id>http://www.tallguyrob.com/2016/02/01/starting-afresh-with-middleman/</id>
     <published>2016-02-01T00:00:00+00:00</published>
-    <updated>2016-06-21T13:30:22+01:00</updated>
+    <updated>2016-06-21T13:32:00+01:00</updated>
     <author>
       <name>Robert White</name>
     </author>
     <summary type="html">For the (3rd, 4th?) time I’ve decided to re-launch my blog. I thought I’d start with a brief post on some of the minor technical details of my experience in switching to use Middleman and Middleman-Blog. I’ve used both Jekyll and Octopress in the past</summary>
-  </entry>
-  <entry>
-    <title>Welcome to Ghost</title>
-    <link rel="alternate" href="http://www.tallguyrob.com/2013/10/26/welcome-to-ghost/"/>
-    <id>http://www.tallguyrob.com/2013/10/26/welcome-to-ghost/</id>
-    <published>2013-10-26T01:00:00+01:00</published>
-    <updated>2016-06-21T13:30:22+01:00</updated>
-    <author>
-      <name>Robert White</name>
-    </author>
-    <summary type="html">You’re in! Nice. We’ve put together a little post to introduce you to the Ghost
-editor and get you started. Go ahead and edit this post to get going and learn
-how it all works!
-
-Getting Started
-
-Writing in markdown is really easy. In the left hand panel</summary>
   </entry>
 </feed>
