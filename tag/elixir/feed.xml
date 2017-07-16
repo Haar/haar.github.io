@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Tall Guy Rob</title>
-  <subtitle>\noun\ A developer of things, usually software.</subtitle>
+  <title>Tall Guy Rob: Elixir</title>
+  <subtitle>Posts tagged with Elixir</subtitle>
   <id>http://www.tallguyrob.com</id>
   <link href="http://www.tallguyrob.com"/>
-  <link href="http://www.tallguyrob.com/feed.xml" rel="self"/>
+  <link href="http://www.tallguyrob.com/tag/elixir/feed.xml" rel="self"/>
   <updated>2017-07-15T01:00:00+01:00</updated>
   <author>
     <name>Robert White</name>
@@ -21,16 +21,5 @@
     <summary type="html">Over the past four months I’ve been writing Elixir full-time for backend systems. From this I’ll be releasing a series of small blog posts about techniques we utilise, and the advantages and disadvantages that we’ve found whilst using them.
 
 The first</summary>
-  </entry>
-  <entry>
-    <title>Starting afresh with Middleman</title>
-    <link rel="alternate" href="http://www.tallguyrob.com/starting-afresh-with-middleman/"/>
-    <id>http://www.tallguyrob.com/starting-afresh-with-middleman/</id>
-    <published>2016-02-01T00:00:00+00:00</published>
-    <updated>2017-07-16T11:56:50+01:00</updated>
-    <author>
-      <name>Robert White</name>
-    </author>
-    <summary type="html">For the (3rd, 4th?) time I’ve decided to re-launch my blog. I thought I’d start with a brief post on some of the minor technical details of my experience in switching to use Middleman and Middleman-Blog. I’ve used both Jekyll and Octopress in the past</summary>
   </entry>
 </feed>

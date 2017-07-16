@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>TallGuyRob: Blog</title>
+  <title>Tall Guy Rob: Blog</title>
   <subtitle>Posts tagged with Blog</subtitle>
   <id>http://www.tallguyrob.com</id>
   <link href="http://www.tallguyrob.com"/>
@@ -11,10 +11,10 @@
   </author>
   <entry>
     <title>Starting afresh with Middleman</title>
-    <link rel="alternate" href="http://www.tallguyrob.com/2016/02/01/starting-afresh-with-middleman/"/>
-    <id>http://www.tallguyrob.com/2016/02/01/starting-afresh-with-middleman/</id>
+    <link rel="alternate" href="http://www.tallguyrob.com/starting-afresh-with-middleman/"/>
+    <id>http://www.tallguyrob.com/starting-afresh-with-middleman/</id>
     <published>2016-02-01T00:00:00+00:00</published>
-    <updated>2016-06-21T13:32:00+01:00</updated>
+    <updated>2017-07-16T11:56:50+01:00</updated>
     <author>
       <name>Robert White</name>
     </author>

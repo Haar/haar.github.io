@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tall Guy Rob: Cheating at Railway Oriented Programming in Elixir</title>
+<meta content='Over the past four months I&amp;rsquo;ve been writing Elixir full-time for backend systems. From this I&amp;rsquo;ll be releasing a series of small blog...' name='description'>
+<meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<meta content='True' name='HandheldFriendly'>
+<meta content='Tall Guy Rob' property='og:site_name'>
+<meta content='article' property='og:type'>
+<meta content='Cheating at Railway Oriented Programming in Elixir' property='og:title'>
+<meta content='Over the past four months I&amp;rsquo;ve been writing Elixir full-time for backend systems. From this I&amp;rsquo;ll be releasing a series of small blog...' property='og:description'>
+<meta content='http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/' property='og:url'>
+<meta content='2017-07-15' property='article:published_time'>
+<meta content='summary' name='twitter:card'>
+<meta content='tallguyrob' name='twitter:site'>
+<meta content='Cheating at Railway Oriented Programming in Elixir' name='twitter:title'>
+<meta content='Over the past four months I&amp;rsquo;ve been writing Elixir full-time for backend systems. From this I&amp;rsquo;ll be releasing a series of small blog...' name='twitter:description'>
+<meta content='http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/' name='twitter:url'>
+<link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
+<link href="/images/favicon.ico" rel="icon" type="image/ico" />
+<link href="/stylesheets/application.css" rel="stylesheet" />
+<link href='//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400' rel='stylesheet' type='text/css'>
+</head>
+<body class='post-template nav-closed'>
+<div class='nav'>
+<h3 class='nav-title'>Menu</h3>
+<a class='nav-close' href='#'>
+<span class='hidden'>Close</span>
+</a>
+<ul>
+<li class='nav-home' role='presentation'>
+<a href='/'>Home</a>
+</li>
+</ul>
+<a class='subscribe-button icon-feed' href='/feed.xml'>Subscribe</a>
+</div>
+<span class='nav-cover'></span>
+
+<div class='site-wrapper'>
+<header class='main-header no-cover post-head'>
+<nav class='main-nav clearfix'>
+<a class='menu-button icon-menu' href='#'>
+<span class='word'>Menu</span>
+</a>
+</nav>
+</header>
+<main class='content' role='main'>
+<article class='post'>
+<header class='post-header'>
+<h1 class='post-title'>Cheating at Railway Oriented Programming in Elixir</h1>
+<section class='post-meta'>
+<time class='post-date' datetime='2017-07-15'>
+15 July 2017
+</time>
+on <a href='/tag/elixir/'>Elixir</a>, <a href='/tag/software-architecture/'>Software Architecture</a>,  and <a href='/tag/design-techniques/'>Design Techniques</a>
+</section>
+</header>
+<section class='post-content'><p>Over the past four months I&rsquo;ve been writing Elixir full-time for backend systems. From this I&rsquo;ll be releasing a series of small blog posts about techniques we utilise, and the advantages and disadvantages that we&rsquo;ve found whilst using them.</p>
+
+<p>The first as the title suggests relates to Railway Oriented Programming as presented by Scott Wlaschin <a rel="nofollow" href="https://vimeo.com/97344498">here</a>. If you haven&rsquo;t watched the video and you are interested in functional programming techniques I would highly you stop right here and go watch it.</p>
+
+<p>To summarise, Railway Oriented Programming is a technique designed to allow a program to proceed through to completion should it fail at any point, with a uniform error handling that allows you to compose functions as you would aim to in a &ldquo;perfect&rdquo; world. The pain-points to consider with functional programming are around the lack of early returns, exceptions, and modelling stateful data. A blog post around directly implementing those design patterns can be found <a rel="nofollow" href="http://www.zohaib.me/railway-programming-pattern-in-elixir/">here</a>.</p>
+
+<p>The initial example from the talk is the following hypothetical:</p>
+<pre class="highlight elixir"><code><span class="k">def</span> <span class="n">update_user_preferences</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+  <span class="n">request</span>
+  <span class="o">|&gt;</span> <span class="n">validate_request</span>
+  <span class="o">|&gt;</span> <span class="n">get_user</span>
+  <span class="o">|&gt;</span> <span class="n">update_db_from_request</span>
+  <span class="o">|&gt;</span> <span class="n">send_email</span>
+  <span class="o">|&gt;</span> <span class="n">return_http_message</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>A close equivalent set of functionality utilising the <code>with</code> macro would be:</p>
+<pre class="highlight elixir"><code><span class="k">def</span> <span class="n">update_user_preferences</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+  <span class="n">with</span> <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">request</span><span class="p">}</span>    <span class="o">&lt;-</span> <span class="n">validate</span><span class="p">(</span><span class="n">request</span><span class="p">),</span>
+       <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">user</span><span class="p">}</span>       <span class="o">&lt;-</span> <span class="n">fetch_user</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user_id</span><span class="p">),</span>
+       <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">_</span><span class="p">}</span>          <span class="o">&lt;-</span> <span class="n">update_preferences</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">preferences</span><span class="p">),</span>
+       <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">sent_email</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">send_email</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="ss">:preferences_updated</span><span class="p">)</span>
+  <span class="k">do</span>
+    <span class="n">return_http_message</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">sent_mail</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>This functionality is dependent on the return &ldquo;shape&rdquo; to be pattern matched, using the standard convention of returning either an ok tuple (<code>{:ok, result}</code>), or an error tuple (<code>{:error, # ...}</code>). It provides us a uniform error handling by propogating the error that occurred back up the call chain, or allows us to pattern match the error in a provided else-clause, like so:</p>
+<pre class="highlight elixir"><code><span class="k">def</span> <span class="n">update_user_preferences</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+  <span class="n">with</span> <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">request</span><span class="p">}</span>    <span class="o">&lt;-</span> <span class="n">validate</span><span class="p">(</span><span class="n">request</span><span class="p">),</span>
+       <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">user</span><span class="p">}</span>       <span class="o">&lt;-</span> <span class="no">User</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user_id</span><span class="p">),</span>
+       <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">_</span><span class="p">}</span>          <span class="o">&lt;-</span> <span class="no">User</span><span class="o">.</span><span class="n">update_preferences</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">preferences</span><span class="p">),</span>
+       <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">sent_email</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">send_email</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="ss">:preferences_updated</span><span class="p">)</span>
+  <span class="k">do</span>
+    <span class="n">return_http_message</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">sent_mail</span><span class="p">)</span>
+  <span class="k">else</span>
+    <span class="c1"># Three-form error tuples will be the topic for another blog-post</span>
+    <span class="p">{</span><span class="ss">:error</span><span class="p">,</span> <span class="ss">:validation</span><span class="p">,</span> <span class="n">errors</span><span class="p">}</span> <span class="o">-&gt;</span> <span class="n">render_as_json</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+    <span class="p">{</span><span class="ss">:error</span><span class="p">,</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:not_found</span><span class="p">}</span>   <span class="o">-&gt;</span> <span class="c1"># ...</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>We also regain the notion of stateful data. With it the you gain the flexibility to design functions around their purpose without needing utility functions to wrap them in order to connect the tracks nicely (you have the complete past scope to work with, not just what was passed in). A correct-in-spirit-but-not-quite way to imagine it is as a set of composed case statements, with the error handling injected as pattern matches in each of the cases. This provides us with access to any of the parent function call scopes.</p>
+<pre class="highlight elixir"><code><span class="k">case</span> <span class="n">validate</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="k">do</span>
+  <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">request</span><span class="p">}</span> <span class="o">-&gt;</span>
+    <span class="k">case</span> <span class="no">User</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span> <span class="k">do</span>
+      <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">user</span><span class="p">}</span> <span class="o">-&gt;</span>
+        <span class="c1"># Rinse and repeat</span>
+  <span class="c1"># Inject the error handling</span>
+  <span class="p">{</span><span class="ss">:error</span><span class="p">,</span> <span class="ss">:validation</span><span class="p">,</span> <span class="n">errors</span><span class="p">}</span> <span class="o">-&gt;</span>
+    <span class="n">render_as_json</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>In summary, the <code>with</code> macro is a nice abstraction that handles the initial error examples demonstrated by Scott Wlaschin in an elegent and powerful way, as promoted by Elixirs awesome pattern-matching functionality. It &ldquo;cheats&rdquo; at the R.O.P concept by providing us an impure-yet-elegent way of composing high-level functions, resulting in a clean and powerful abstraction that gets the job done.</p>
+
+<h4>References</h4>
+
+<p><a rel="nofollow" href="https://til.hashrocket.com/posts/6a6f5e9fff-elixir-with-macro-and">Elixir with macro</a>
+<a rel="nofollow" href="https://vimeo.com/97344498">Scott Wlaschin - Railway Oriented Programming</a>
+<a rel="nofollow" href="http://www.zohaib.me/railway-programming-pattern-in-elixir/">Railway Oriented Programming in Elixir</a></p>
+</section>
+<footer class='post-footer'>
+<figure class='author-image'>
+<a class='img' href='/author/robert-white/' style='background-image: url(https://www.gravatar.com/avatar/cf287f9be7d446cd4afe75daa1c478d3?size=68)'>
+<span class='hidden'>Robert White's Picture</span>
+</a>
+</figure>
+<section class='author'>
+<h4>
+<a href='/author/robert-white/'>Robert White</a>
+</h4>
+<p></p>
+Polyglot Software Developer. Demonstrated Vim-nerd. Currently focused on language and system architecture at Sky UK.
+<div class='author-meta'>
+<span class='author-location icon-location'>United Kingdom</span>
+<span class='author-link icon-link'>
+<a href='https://www.tallguyrob.com'>https://www.tallguyrob.com</a>
+</span>
+</div>
+</section>
+<section class='share'>
+<h4>Share this post</h4>
+<a class='icon-twitter' href='https://twitter.com/intent/tweet?text=Cheating at Railway Oriented Programming in Elixir&amp;amp;url=http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/' onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+<span class='hidden'>Twitter</span>
+</a>
+<a class='icon-facebook' href='https://www.facebook.com/sharer/sharer.php?u=http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/' onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+<span class='hidden'>Facebook</span>
+</a>
+<a class='icon-google-plus' href='https://plus.google.com/share?url=http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/' onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+<span class='hidden'>Google+</span>
+</a>
+</section>
+</footer>
+</article>
+</main>
+<aside class='read-next'>
+<a class='no-cover read-next-story' href='/starting-afresh-with-middleman/'>
+<section class='post'>
+<h2>Starting afresh with Middleman</h2>
+<p>For the (3rd, 4th?) time I&rsquo;ve decided to re-launch my blog. I thought I&rsquo;d start with a brief post&hellip;</p>
+</section>
+</a>
+</aside>
+
+<footer class='site-footer clearfix'>
+<section class='copyright'>
+&copy;
+<a href='/'>Tall Guy Rob</a>
+2017
+</section>
+</footer>
+</div>
+<script src="/javascripts/application.js"></script>
+</body>
+</html>
