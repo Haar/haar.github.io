@@ -5,18 +5,18 @@
 config[:casper] = {
   blog: {
     url: 'http://www.tallguyrob.com',
-    name: 'TallGuyRob',
-    description: 'A brief insight into the chaos that is my mind.',
+    name: 'Tall Guy Rob',
+    description: '\noun\ A developer of things, usually software.',
     date_format: '%d %B %Y',
     navigation: true,
     logo: nil # Optional
   },
   author: {
     name: 'Robert White',
-    bio: 'Managing Director of Terracoding, an awesome software development shop based in Sheffield, UK.', # Optional
-    location: 'UK', # Optional
+    bio: 'Polyglot Software Developer. Demonstrated Vim-nerd. Currently focused on language and system architecture at Sky UK.', # Optional
+    location: 'United Kingdom', # Optional
     website: 'https://www.tallguyrob.com', # Optional
-    gravatar_email: 'robert@terracoding.com', # Optional
+    gravatar_email: 'rob@tallguyrob.com', # Optional
     twitter: 'tallguyrob' # Optional
   },
   navigation: {
@@ -85,7 +85,7 @@ activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
 
-  # blog.permalink = "{year}/{month}/{day}/{title}.html"
+  blog.permalink = "{title}.html"
   # Matcher for blog source files
   blog.sources = "articles/{year}-{month}-{day}-{title}.html"
   blog.taglink = "tag/{tag}.html"
