@@ -110,8 +110,10 @@ on <a href='/tag/elixir/'>Elixir</a>, <a href='/tag/software-architecture/'>Soft
 <pre class="highlight elixir"><code><span class="k">case</span> <span class="n">validate</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="k">do</span>
   <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">request</span><span class="p">}</span> <span class="o">-&gt;</span>
     <span class="k">case</span> <span class="no">User</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span> <span class="k">do</span>
+      <span class="c1"># Rinse and repeat</span>
       <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">user</span><span class="p">}</span> <span class="o">-&gt;</span>
-        <span class="c1"># Rinse and repeat</span>
+        <span class="k">case</span> <span class="no">User</span><span class="o">.</span><span class="n">update_preferences</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">preferences</span><span class="p">)</span> <span class="k">do</span>
+          <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">_</span><span class="p">}</span> <span class="o">-&gt;</span>
   <span class="c1"># Inject the error handling</span>
   <span class="p">{</span><span class="ss">:error</span><span class="p">,</span> <span class="ss">:validation</span><span class="p">,</span> <span class="n">errors</span><span class="p">}</span> <span class="o">-&gt;</span>
     <span class="n">render_as_json</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
