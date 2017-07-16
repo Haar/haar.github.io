@@ -66,8 +66,10 @@ A correct-in-spirit-but-not-quite way to imagine it is as a set of composed case
 case validate(request) do
   {:ok, request} ->
     case User.fetch(request.user_id) do
+      # Rinse and repeat
       {:ok, user} ->
-        # Rinse and repeat
+        case User.update_preferences(user, request.preferences) do
+          {:ok, _} ->
   # Inject the error handling
   {:error, :validation, errors} ->
     render_as_json(errors)
