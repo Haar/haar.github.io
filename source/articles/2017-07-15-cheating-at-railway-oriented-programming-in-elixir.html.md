@@ -38,7 +38,7 @@ def update_user_preferences(conn, request)
 end
 ```
 
-This functionality is dependent on the return "shape" to be pattern matched, using the standard convention of returning either an ok tuple (`{:ok, result}`), or an error tuple (`{:error, # ...}`). It provides us a uniform error handling by propogating the error that occurred back up the call chain, or allows us to pattern match the error in a provided else-clause, like so:
+This functionality is dependent on the return "shape" to be pattern matched, using the standard convention of returning either an ok tuple (`{:ok, result}`), or an error tuple (`{:error, # ...}`). It provides us a uniform error handling by propagating the error that occurred back up the call chain, or allows us to pattern match the error in a provided else-clause, like so:
 
 ``` elixir
 def update_user_preferences(conn, request)
