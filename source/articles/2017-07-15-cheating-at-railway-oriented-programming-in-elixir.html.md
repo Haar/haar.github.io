@@ -74,7 +74,6 @@ end
 In summary, the `with` macro is a nice abstraction that handles the initial error examples demonstrated by Scott Wlaschin in an elegent and powerful way, as promoted by Elixirs awesome pattern-matching functionality. It "cheats" at the R.O.P concept by providing us an impure-yet-elegent way of composing high-level functions, resulting in a clean and powerful abstraction that gets the job done.
 
 #### References
-
-[Elixir with macro](https://til.hashrocket.com/posts/6a6f5e9fff-elixir-with-macro-and)
-[Scott Wlaschin - Railway Oriented Programming](https://vimeo.com/97344498)
-[Railway Oriented Programming in Elixir](http://www.zohaib.me/railway-programming-pattern-in-elixir/)
+* [Elixir with macro](https://til.hashrocket.com/posts/6a6f5e9fff-elixir-with-macro-and)
+* [Scott Wlaschin - Railway Oriented Programming](https://vimeo.com/97344498)
+* [Railway Oriented Programming in Elixir](http://www.zohaib.me/railway-programming-pattern-in-elixir/)
