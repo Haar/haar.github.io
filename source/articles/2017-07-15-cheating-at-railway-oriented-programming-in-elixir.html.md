@@ -56,7 +56,11 @@ def update_user_preferences(conn, request)
 end
 ```
 
-We also regain the notion of stateful data. With it the you gain the flexibility to design functions around their purpose without needing utility functions to wrap them in order to connect the tracks nicely (you have the complete past scope to work with, not just what was passed in). A correct-in-spirit-but-not-quite way to imagine it is as a set of composed case statements, with the error handling injected as pattern matches in each of the cases. This provides us with access to any of the parent function call scopes.
+We also regain the notion of stateful data, in that each variable assigned from the result of a previous function call is also accessible in any subsequent one. This provides us with the flexibility to design functions focused on their purpose, rather than needing to consider the input and output of a function in the greater scope.
+
+In order to achieve the same kind of focused and well-defined functions outside of the `with` macro, we would need dedicated utility/wrapper functions that dilute or otherwise distract from the readability/intent of the code.
+
+A correct-in-spirit-but-not-quite way to imagine it is as a set of composed case statements, with the error handling injected as pattern matches in each of the cases. This provides us with access to any of the parent case scopes.
 
 ``` elixir
 case validate(request) do
