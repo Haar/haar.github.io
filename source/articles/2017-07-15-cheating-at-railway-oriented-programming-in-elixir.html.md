@@ -7,7 +7,7 @@ layout: post
 
 Over the past four months I've been writing Elixir full-time for backend systems. From this I'll be releasing a series of small blog posts about techniques we utilise, and the advantages and disadvantages that we've found whilst using them.
 
-The first as the title suggests relates to Railway Oriented Programming as presented by Scott Wlaschin [here](https://vimeo.com/97344498). If you haven't watched the video and you are interested in functional programming techniques I would highly you stop right here and go watch it.
+The first as the title suggests relates to Railway Oriented Programming as presented by Scott Wlaschin [here](https://vimeo.com/97344498). If you haven't watched the video and you are interested in functional programming techniques, then I would highly recommend you stop right here and go watch it.
 
 To summarise, Railway Oriented Programming is a technique designed to allow a program to proceed through to completion should it fail at any point, with a uniform error handling that allows you to compose functions as you would aim to in a "perfect" world. The pain-points to consider with functional programming are around the lack of early returns, exceptions, and modelling stateful data. A blog post around directly implementing those design patterns can be found [here](http://www.zohaib.me/railway-programming-pattern-in-elixir/).
 
