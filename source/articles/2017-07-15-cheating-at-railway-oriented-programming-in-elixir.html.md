@@ -16,11 +16,11 @@ The initial example from the talk is the following hypothetical:
 ``` elixir
 def update_user_preferences(conn, request)
   request
-  |> validate_request
-  |> get_user
-  |> update_db_from_request
-  |> send_email
-  |> return_http_message
+  |> validate_request()
+  |> get_user()
+  |> update_db_from_request()
+  |> send_email()
+  |> return_http_message()
 end
 ```
 
@@ -49,9 +49,8 @@ def update_user_preferences(conn, request)
   do
     return_http_message(conn, user, sent_mail)
   else
-    # Three-form error tuples will be the topic for another blog-post
-    {:error, :validation, errors} -> render_as_json(errors)
-    {:error, :user, :not_found}   -> # ...
+    {:error, {:validation, errors}} -> render_as_json(errors)
+    {:error, {:user, :not_found}}   -> # ...
   end
 end
 ```
@@ -71,7 +70,7 @@ case validate(request) do
         case User.update_preferences(user, request.preferences) do
           {:ok, _} ->
   # Inject the error handling
-  {:error, :validation, errors} ->
+  {:error, {:validation, errors}} ->
     render_as_json(errors)
   # ...
 end
