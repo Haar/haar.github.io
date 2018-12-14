@@ -3,7 +3,7 @@ include RakeHelpers
 
 desc 'Launch a server daemon with live reloading'
 task :preview do
-  system('middleman')
+  system('bundle exec middleman')
 end
 
 desc 'Deploy the build folder to Github pages'
@@ -11,12 +11,12 @@ task :deploy do
   puts 'Removing existing build folder'
   `rm -rf build`
   puts 'Building and deploying site to master'
-  `mgd --branch master`
+  `bundle exec mgd --branch master`
   `git checkout source`
 end
 
 desc 'Create a post file and folder'
-task :post, :title do |t, args|
+task :post, :title do |_, args|
   title = args[:title]
   slug = slugify(title)
 
