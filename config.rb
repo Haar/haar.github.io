@@ -13,7 +13,9 @@ config[:casper] = {
   },
   author: {
     name: 'Robert White',
-    bio: 'Polyglot Software Developer. Demonstrated Vim-nerd. Currently focused on language and system architecture at Sky UK.', # Optional
+    bio: 'Polyglot Software Developer. Demonstrated Vim-nerd. ' \
+         'Currently focused on building reactive systems at ' \
+         'Sky Betting and Gaming.', # Optional
     location: 'United Kingdom', # Optional
     website: 'https://www.tallguyrob.com', # Optional
     gravatar_email: 'rob@tallguyrob.com', # Optional
@@ -64,12 +66,15 @@ tags = resources
   .each_with_object({}, &method(:group_lookup))
 
 tags.each do |tag, articles|
-  proxy "/tag/#{tag.downcase.to_s.parameterize}/feed.xml", '/feed.xml',
-    locals: { tag: tag, articles: articles[0..5] }, layout: false
+  proxy("/tag/#{tag.downcase.to_s.parameterize}/feed.xml",
+        '/feed.xml',
+        locals: { tag: tag, articles: articles[0..5] },
+        layout: false)
 end
 
-proxy "/author/#{config.casper[:author][:name].parameterize}.html",
-  '/author.html', ignore: true
+proxy("/author/#{config.casper[:author][:name].parameterize}.html",
+      '/author.html',
+      ignore: true)
 
 # General configuration
 # Reload the browser automatically whenever files change
