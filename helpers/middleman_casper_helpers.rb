@@ -95,7 +95,7 @@ module MiddlemanCasperHelpers
     page.data.cover.present?
   end
 
-  def gravatar(size = 68)
+  def gravatar(size = 136)
     md5 = Digest::MD5.hexdigest(blog_author.gravatar_email.downcase)
     "https://www.gravatar.com/avatar/#{md5}?size=#{size}"
   end
