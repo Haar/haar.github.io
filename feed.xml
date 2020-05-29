@@ -5,16 +5,31 @@
   <id>http://www.tallguyrob.com</id>
   <link href="http://www.tallguyrob.com"/>
   <link href="http://www.tallguyrob.com/feed.xml" rel="self"/>
-  <updated>2017-07-15T01:00:00+01:00</updated>
+  <updated>2020-04-12T01:00:00+01:00</updated>
   <author>
     <name>Robert White</name>
   </author>
+  <entry>
+    <title>Dark Mode Support</title>
+    <link rel="alternate" href="http://www.tallguyrob.com/dark-mode-support/"/>
+    <id>http://www.tallguyrob.com/dark-mode-support/</id>
+    <published>2020-04-12T01:00:00+01:00</published>
+    <updated>2020-05-29T16:30:23+01:00</updated>
+    <author>
+      <name>Robert White</name>
+    </author>
+    <summary type="html">This blog post covers my addition of support for dark-mode OS setting as shown in the screenshot below. I am quite happy with the visual outcome, though I have yet to add a switch to manually set a preference for this site specifically.
+
+
+
+The Inspiration</summary>
+  </entry>
   <entry>
     <title>Cheating at Railway Oriented Programming in Elixir</title>
     <link rel="alternate" href="http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/"/>
     <id>http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/</id>
     <published>2017-07-15T01:00:00+01:00</published>
-    <updated>2020-05-29T16:10:14+01:00</updated>
+    <updated>2020-05-29T16:30:23+01:00</updated>
     <author>
       <name>Robert White</name>
     </author>
@@ -27,7 +42,7 @@ The first</summary>
     <link rel="alternate" href="http://www.tallguyrob.com/starting-afresh-with-middleman/"/>
     <id>http://www.tallguyrob.com/starting-afresh-with-middleman/</id>
     <published>2016-02-01T00:00:00+00:00</published>
-    <updated>2020-05-29T16:10:14+01:00</updated>
+    <updated>2020-05-29T16:30:23+01:00</updated>
     <author>
       <name>Robert White</name>
     </author>

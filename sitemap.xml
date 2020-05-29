@@ -1,50 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.tallguyrob.com/dark-mode-support/index.html</loc>
+    <lastmod>2020-05-29T16:30:23+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://www.tallguyrob.com/starting-afresh-with-middleman/index.html</loc>
-    <lastmod>2020-05-29T16:10:14+01:00</lastmod>
+    <lastmod>2020-05-29T16:30:23+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/index.html</loc>
-    <lastmod>2020-05-29T16:10:14+01:00</lastmod>
+    <lastmod>2020-05-29T16:30:23+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.tallguyrob.com/index.html</loc>
-    <lastmod>2020-05-29T16:10:17+01:00</lastmod>
+    <lastmod>2020-05-29T16:30:27+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.tallguyrob.com/author/robert-white/index.html</loc>
-    <lastmod>2020-05-29T16:10:17+01:00</lastmod>
+    <lastmod>2020-05-29T16:30:27+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.tallguyrob.com/tag/blog/index.html</loc>
-    <lastmod>2020-05-29T16:10:17+01:00</lastmod>
+    <lastmod>2020-05-29T16:30:27+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.tallguyrob.com/tag/front-end/index.html</loc>
+    <lastmod>2020-05-29T16:30:27+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.tallguyrob.com/tag/elixir/index.html</loc>
-    <lastmod>2020-05-29T16:10:17+01:00</lastmod>
+    <lastmod>2020-05-29T16:30:27+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.tallguyrob.com/tag/software-architecture/index.html</loc>
-    <lastmod>2020-05-29T16:10:17+01:00</lastmod>
+    <lastmod>2020-05-29T16:30:27+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.tallguyrob.com/tag/design-techniques/index.html</loc>
-    <lastmod>2020-05-29T16:10:17+01:00</lastmod>
+    <lastmod>2020-05-29T16:30:27+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

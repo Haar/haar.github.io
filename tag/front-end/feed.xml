@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Tall Guy Rob: Blog</title>
-  <subtitle>Posts tagged with Blog</subtitle>
+  <title>Tall Guy Rob: front-end</title>
+  <subtitle>Posts tagged with front-end</subtitle>
   <id>http://www.tallguyrob.com</id>
   <link href="http://www.tallguyrob.com"/>
-  <link href="http://www.tallguyrob.com/tag/blog/feed.xml" rel="self"/>
+  <link href="http://www.tallguyrob.com/tag/front-end/feed.xml" rel="self"/>
   <updated>2020-04-12T01:00:00+01:00</updated>
   <author>
     <name>Robert White</name>
@@ -23,16 +23,5 @@
 
 
 The Inspiration</summary>
-  </entry>
-  <entry>
-    <title>Starting afresh with Middleman</title>
-    <link rel="alternate" href="http://www.tallguyrob.com/starting-afresh-with-middleman/"/>
-    <id>http://www.tallguyrob.com/starting-afresh-with-middleman/</id>
-    <published>2016-02-01T00:00:00+00:00</published>
-    <updated>2020-05-29T16:30:23+01:00</updated>
-    <author>
-      <name>Robert White</name>
-    </author>
-    <summary type="html">For the (3rd, 4th?) time I’ve decided to re-launch my blog. I thought I’d start with a brief post on some of the minor technical details of my experience in switching to use Middleman and Middleman-Blog. I’ve used both Jekyll and Octopress in the past</summary>
   </entry>
 </feed>
