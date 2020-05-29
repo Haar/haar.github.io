@@ -5,7 +5,7 @@
   <id>http://www.tallguyrob.com</id>
   <link href="http://www.tallguyrob.com"/>
   <link href="http://www.tallguyrob.com/tag/elixir/feed.xml" rel="self"/>
-  <updated>2017-07-15T00:00:00Z</updated>
+  <updated>2017-07-15T01:00:00+01:00</updated>
   <author>
     <name>Robert White</name>
   </author>
@@ -13,8 +13,8 @@
     <title>Cheating at Railway Oriented Programming in Elixir</title>
     <link rel="alternate" href="http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/"/>
     <id>http://www.tallguyrob.com/cheating-at-railway-oriented-programming-in-elixir/</id>
-    <published>2017-07-15T00:00:00Z</published>
-    <updated>2018-12-14T13:22:58+00:00</updated>
+    <published>2017-07-15T01:00:00+01:00</published>
+    <updated>2020-05-29T16:10:14+01:00</updated>
     <author>
       <name>Robert White</name>
     </author>
